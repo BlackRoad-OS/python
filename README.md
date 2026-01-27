@@ -133,7 +133,7 @@ This library uses environment variables for configuration:
 ## Usage Example
 
 ```python
-from blackroad import Config, Logger, MetricsClient
+from blackroad import Config, Logger
 
 # Initialize configuration
 config = Config.from_env()
@@ -141,10 +141,7 @@ config = Config.from_env()
 # Create logger
 logger = Logger(__name__)
 logger.info("BlackRoad Python initialized")
-
-# Connect to other services
-metrics = MetricsClient(config.metrics_url)
-metrics.increment("app.started")
+logger.info(f"Running in {config.env} environment")
 ```
 
 ## API Reference
