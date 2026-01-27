@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blackroad-python"
+version = "0.1.0"
+description = "Core Python utilities and libraries for BlackRoad OS ecosystem"
+readme = "README.md"
+license = {text = "Proprietary"}
+authors = [
+    {name = "BlackRoad OS", email = "blackroad.systems@gmail.com"}
+]
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
+keywords = [
+    "blackroad", "blackroad-os", "python", "utilities", "framework"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/BlackRoad-OS/python"
+Documentation = "https://docs.blackroad.io/python"
+Repository = "https://github.com/BlackRoad-OS/python"
+Issues = "https://github.com/BlackRoad-OS/python/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["blackroad*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --cov=blackroad --cov-report=term-missing"
+
+[tool.black]
+line-length = 88
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_ignores = true
+strict = true
